@@ -14,7 +14,6 @@ namespace Pedidos.Entidades
             SetNombre(nombre);
         }
 
-
         #region Properties
 
         public int Id { get ; set ; }
@@ -26,7 +25,6 @@ namespace Pedidos.Entidades
 
         #region Virtual
 
-        // Relación: una categoría puede tener muchos productos
         public virtual ICollection<Producto> Productos { get; set; }
         #endregion
 

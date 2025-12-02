@@ -15,19 +15,19 @@ namespace Pedidos.Servicios.AuthServices
     public class TokenHandlerService : ITokenHandlerService
     {
 
-        private readonly JwtConfig _jwtConfig; //JWT (JSON Web Token)
+        private readonly JwtConfig _jwtConfig; 
 
 
         public TokenHandlerService(IOptionsMonitor<JwtConfig> optionsMonitor)
         {
-            _jwtConfig = optionsMonitor.CurrentValue;//valor actual
+            _jwtConfig = optionsMonitor.CurrentValue;
         }
 
         public string GenerateJwtTokens(ITokensParameters parametros)
         {
-            var jwtTokendHandler = new JwtSecurityTokenHandler(); //crea y escribe los tokens.
+            var jwtTokendHandler = new JwtSecurityTokenHandler(); 
 
-            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);// convierte tu clave secreta(_jwtConfig.Secret) en un arreglo de bytes, para usarla como llave criptográfica.
+            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);
 
             var claims = new List<Claim>
             {
@@ -47,14 +47,6 @@ namespace Pedidos.Servicios.AuthServices
 
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
-                //Subject = new ClaimsIdentity(new[]      //CLAIM: AFIRMAR
-                //{
-                //    new Claim ("Id", parametros.Id),
-                //    new Claim(JwtRegisteredClaimNames.Sub,parametros.Id),
-                //    new Claim(JwtRegisteredClaimNames.Name, parametros.UserName),
-                //    new Claim(JwtRegisteredClaimNames.Email, parametros.Email)
-
-                //}),
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddHours(4),
                 SigningCredentials = new SigningCredentials(
@@ -63,10 +55,6 @@ namespace Pedidos.Servicios.AuthServices
                 )
 
 
-              //  Expires = DateTime.UtcNow.AddHours(20),
-                // SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
-
-               // SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = jwtTokendHandler.CreateToken(tokenDescriptor);

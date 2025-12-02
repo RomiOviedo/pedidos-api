@@ -11,10 +11,8 @@ using Pedidos.Aplicacion.DTOs.DetallePedido;
 namespace DetallesPedidos.AplicacionWeb.Controller
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-
     [Route("api/[controller]")]
     [ApiController]
-  //  [ApiExplorerSettings(GroupName = "DetallesPedidos")] // nombre que va a aparecer en Swagger
     public class DetallesPedidosController:ControllerBase
     {
         private readonly UserManager<User> _userManager;
@@ -29,12 +27,11 @@ namespace DetallesPedidos.AplicacionWeb.Controller
             _detallePedido = detallePedido;
             _mapper = mapper;
             _userManager = userManager;
-
         }
+
         [HttpGet]
         [Route("All")]
         [Authorize(Roles = "Administrador, Encargado,Cajero ")]
-
         public async Task<IActionResult> All()
         {
             var deteallePedidos = _detallePedido.GetAll();
@@ -49,7 +46,6 @@ namespace DetallesPedidos.AplicacionWeb.Controller
 
         }
         [HttpGet("ById/{id}")]
-        // [Route("ById")]
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> ById(int id)
@@ -70,7 +66,7 @@ namespace DetallesPedidos.AplicacionWeb.Controller
                 return Ok(_mapper.Map<DetallePedidoResponseDto>(detallPedido));
             }
         }
-        [HttpPost] //CREAR
+        [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> Crear(DetallePedidoCreateRequestDto detallePedidoRequestDto)
@@ -84,14 +80,13 @@ namespace DetallesPedidos.AplicacionWeb.Controller
 
             _detallePedido.Save(detallePedido);
 
-            //return Ok(_mapper.Map<DetallePedidoResponseDto>(detallePedido));
             return Ok(detallePedido.Id);
 
         }
 
 
 
-        [HttpPut] //EDITAR
+        [HttpPut] 
         [Authorize(Roles = "Administrador, Encargado")]
 
         public async Task<IActionResult> Editar(int? Id, DetallePedidoUpdateRequestDto detallePedidoUpdateRequestDto)
@@ -113,7 +108,6 @@ namespace DetallesPedidos.AplicacionWeb.Controller
                 return NotFound();
             }
 
-            //PedidoBack = _mapper.Map<Pedido>(PedidoUpdateRequestDto);
             _mapper.Map(detallePedidoUpdateRequestDto, pedidoBack);
 
 
@@ -122,15 +116,12 @@ namespace DetallesPedidos.AplicacionWeb.Controller
 
             return Ok(_mapper.Map<DetallePedidoResponseDto>(pedidoBack));
 
-
         }
 
-      
         
         
         
-        
-        [HttpDelete("{Id}")] // le paso el id en la ruta
+        [HttpDelete("{Id}")] 
         [Authorize(Roles = "Administrador")]
 
         public async Task<IActionResult> Borrar(int? Id)
@@ -151,7 +142,6 @@ namespace DetallesPedidos.AplicacionWeb.Controller
                 return NotFound();
             }
             _detallePedido.Delete(detallePedidoBack.Id);
-            // return Ok();
             return Ok($"Se eliminó el detalle del pedido con ID {detallePedidoBack.Id}");
         }
 

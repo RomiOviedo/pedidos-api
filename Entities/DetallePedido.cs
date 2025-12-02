@@ -70,14 +70,6 @@ namespace Pedidos.Entidades
             PrecioUnitario = precioUnit;
         }
 
-        //public void SetSubtotal(int subTotal)
-        //{
-        //    if (subTotal < 0)
-        //    {
-        //        throw new ArgumentException("el subtotal debe ser mayor a 0");
-        //    }
-        //    Subtotal = subTotal;
-        //}
         public void SetSubtotal()
         {
             if (Cantidad <= 0)

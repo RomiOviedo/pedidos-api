@@ -38,40 +38,21 @@ namespace Pedidos.AplicacionWeb.Controllers
 
         public async Task<IActionResult> All()
         {
-            // return Ok(_mapper.Map<IList<ClienteResponseDto>>(_cliente.GetAll()));
-
-
-            //var id = User.FindFirst("Id").Value.ToString(); //FindFirst= buscar primer
-
-            //var user = _userManager.FindByIdAsync(id).Result;
-
-
-            //if (_userManager.IsInRoleAsync(user, "Administrador").Result)
-            //{
-            //    var name = User.FindFirst("name");
-            //    var a = User.Claims; //Claims= reclamaciones
             var clientes = _cliente.GetAll();
 
             if (clientes == null || !clientes.Any())
             {
-               // return Ok(new List<ClienteResponseDto>());  // Devuelve lista vacía
-                // también podrías usar:
                 return NoContent();
 
             }
 
             return Ok(_mapper.Map<IList<ClienteResponseDto>>(clientes));
 
-            //}
-            //return Unauthorized();
-
-
 
         }
 
 
         [HttpGet("ById/{id}")]
-        // [Route("ById")]
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> ById(int id)
@@ -96,7 +77,7 @@ namespace Pedidos.AplicacionWeb.Controllers
        
         
         
-        [HttpPost] //CREAR
+        [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado,Cajero ")]
 
         public async Task<IActionResult> Crear(ClienteCreateRequestDto clienteRequestDto)
@@ -110,12 +91,11 @@ namespace Pedidos.AplicacionWeb.Controllers
 
             _cliente.Save(cliente);
 
-            // return Ok(_mapper.Map<ClienteResponseDto>(cliente));
             return Ok(cliente.Id);
         }
 
 
-        [HttpPut] //EDITAR
+        [HttpPut] 
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> Editar(int? Id, ClienteUpdateRequestDto clienteUpdateRequestDto)
@@ -129,7 +109,6 @@ namespace Pedidos.AplicacionWeb.Controllers
                 return BadRequest();
             }
 
-           // Cliente clienteBack = _cliente.GetById(clienteUpdateRequestDto.Id);
 
            Cliente clienteBack = _cliente.GetById(Id.Value);
 
@@ -138,7 +117,6 @@ namespace Pedidos.AplicacionWeb.Controllers
                 return NotFound();
             }
 
-            //clienteBack = _mapper.Map<Cliente>(clienteUpdateRequestDto);
             _mapper.Map(clienteUpdateRequestDto, clienteBack);
 
             _cliente.Save(clienteBack);

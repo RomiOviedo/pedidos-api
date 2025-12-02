@@ -22,11 +22,8 @@ namespace Pedidos.AplicacionWeb.Mapping
                 categoria.SetCantidad(dto.Cantidad);
                 categoria.SetPrecioUnitario(dto.PrecioUnitario);
                 categoria.SetSubtotal();
-            });// 👉 ESTE ES EL QUE TE FALTABA; })
+            });
 
-
-
-                //ForMember(dest => dest.Subtotal, opt => opt.MapFrom(src => src.Cantidad * src.PrecioUnitario));
 
                 CreateMap<DetallePedidoUpdateRequestDto, DetallePedido>()
                  .ForMember(dest => dest.Cantidad, opt => opt.Ignore())

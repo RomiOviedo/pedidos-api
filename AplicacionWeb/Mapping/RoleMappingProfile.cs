@@ -6,8 +6,6 @@ namespace Pedidos.AplicacionWeb.Mapping
 {
     public class RoleMappingProfile : Profile
     {
-
-
         public RoleMappingProfile()
         {
             CreateMap<Role, RoleResponseDto>();

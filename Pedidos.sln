@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entities\Entidades.csproj", "{95DE3BD9-A587-35A9-17E0-3C34D2A57441}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.Entidades", "Entities\Pedidos.Entidades.csproj", "{95DE3BD9-A587-35A9-17E0-3C34D2A57441}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstraccion", "Abstraccion\Abstraccion.csproj", "{2FF808A6-50E7-0BDA-62AD-8EAD99AD9BE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.Abstraccion", "Abstraccion\Pedidos.Abstraccion.csproj", "{2FF808A6-50E7-0BDA-62AD-8EAD99AD9BE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{5958A855-38D8-2012-71D5-B8F8497BFE4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.Servicios", "Servicios\Pedidos.Servicios.csproj", "{5958A855-38D8-2012-71D5-B8F8497BFE4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorio", "Repositorio\Repositorio.csproj", "{373198EA-1F47-0C29-26FC-5FCBE90F3BB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.Repositorio", "Repositorio\Pedidos.Repositorio.csproj", "{373198EA-1F47-0C29-26FC-5FCBE90F3BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{BB35B401-4EF4-989E-18E9-C126B008FEAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.Datos", "Datos\Pedidos.Datos.csproj", "{BB35B401-4EF4-989E-18E9-C126B008FEAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacionWeb", "AplicacionWeb\AplicacionWeb.csproj", "{60CF37D0-0379-6046-B483-9AE05C681F7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.AplicacionWebApi", "AplicacionWeb\Pedidos.AplicacionWebApi.csproj", "{60CF37D0-0379-6046-B483-9AE05C681F7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Aplicacion.csproj", "{54D7E773-B5EC-2465-6F17-0048D1E6AE79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos.Aplicacion", "Aplicacion\Pedidos.Aplicacion.csproj", "{54D7E773-B5EC-2465-6F17-0048D1E6AE79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

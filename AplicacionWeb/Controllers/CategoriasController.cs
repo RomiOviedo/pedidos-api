@@ -37,22 +37,6 @@ namespace Pedidos.AplicacionWeb.Controllers
 
         public async Task<IActionResult> All()
         {
-            // return Ok(_mapper.Map<IList<CategoriaResponseDto>>(_categoria.GetAll()));
-
-            //var id = User.FindFirst("Id").Value.ToString(); //FindFirst= buscar primer
-
-            //var user = _userManager.FindByIdAsync(id).Result;
-
-
-            //if (_userManager.IsInRoleAsync(user, "Administrador, Encargado, Cajero").Result)
-            //{
-            //    var name = User.FindFirst("name");
-            //    var a = User.Claims; //Claims= reclamaciones
-
-            //    return Ok(_mapper.Map<IList<CategoriaResponseDto>>(_categoria.GetAll()));
-
-            //}
-            //return Unauthorized();
 
 
               return Ok(_mapper.Map<IList<CategoriaResponseDto>>(_categoria.GetAll()));
@@ -63,10 +47,6 @@ namespace Pedidos.AplicacionWeb.Controllers
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
         public async Task<IActionResult> ById(int id)
         {
-            //if (!id.HasValue)
-            //{
-            //    return BadRequest();
-            //}
             Categoria categoria = _categoria.GetById(id);
 
             if (categoria is null)
@@ -76,7 +56,7 @@ namespace Pedidos.AplicacionWeb.Controllers
             return Ok(_mapper.Map<CategoriaResponseDto>(categoria));
         }
 
-        [HttpPost] //CREAR
+        [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado")]
 
 
@@ -123,34 +103,28 @@ namespace Pedidos.AplicacionWeb.Controllers
 
             try
             {
-                // CategoriaBack = _mapper.Map<Categoria>(CategoriaUpdateRequestDto);
                 _mapper.Map(CategoriaUpdateRequestDto, CategoriaBack);
 
                 _categoria.Save(CategoriaBack);
 
-                //return Ok(_mapper.Map<CategoriaResponseDto>(CategoriaBack));
                 return Ok();
 
             }
             catch (ArgumentException aex)
             {
-                // tu validación lanza ArgumentException -> devolvemos el mensaje
                 return BadRequest(aex.Message);
             }
             catch (Exception ex)
             {
-                // para debugging temporal: loguear o devolver el detalle
                 return StatusCode(500, new { Message = "Error al editar categoría", Error = ex.Message });
             }
         }
 
 
 
-        // [Authorize]
         [HttpDelete]
         [Authorize(Roles = "Administrador")]
 
-        //[HttpDelete("{Id}")]
         public async Task<IActionResult> Borrar(int? Id)
         {
             if (!Id.HasValue)
@@ -170,7 +144,6 @@ namespace Pedidos.AplicacionWeb.Controllers
             }
             _categoria.Delete(CategoriaBack.Id);
              return Ok();
-            //return NoContent();
         }
 
 

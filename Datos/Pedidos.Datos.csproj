@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Abstraccion\Abstraccion.csproj" />
-    <ProjectReference Include="..\Entities\Entidades.csproj" />
+    <ProjectReference Include="..\Abstraccion\Pedidos.Abstraccion.csproj" />
+    <ProjectReference Include="..\Entities\Pedidos.Entidades.csproj" />
    </ItemGroup>
 
 </Project>

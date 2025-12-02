@@ -11,14 +11,12 @@ using Pedidos.Entidades.MicrosoftIdentity;
 namespace Pedidos.AplicacionWeb.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-
     [Route("api/[controller]")]
     [ApiController]
 
     public class ProductosController:ControllerBase
     {
         private readonly UserManager<User> _userManager;
-
         private readonly ILogger<ProductosController> _logger;
         private readonly IApplication<Producto> _producto;
         private readonly IMapper _mapper;
@@ -42,8 +40,6 @@ namespace Pedidos.AplicacionWeb.Controllers
 
             if (producto == null || !producto.Any())
             {
-                // return Ok(new List<ClienteResponseDto>());  // Devuelve lista vacía
-                // también podrías usar:
                 return NoContent();
 
             }
@@ -54,7 +50,6 @@ namespace Pedidos.AplicacionWeb.Controllers
 
 
         [HttpGet("ById/{id}")]
-        // [Route("ById")]
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> ById(int id)
@@ -76,7 +71,7 @@ namespace Pedidos.AplicacionWeb.Controllers
             }
         }
 
-        [HttpPost] //CREAR
+        [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado")]
 
         public async Task<IActionResult> Crear(ProductoCreateRequestDto ProductoRequestDto)
@@ -90,12 +85,11 @@ namespace Pedidos.AplicacionWeb.Controllers
 
             _producto.Save(Producto);
 
-            //return Ok(_mapper.Map<ProductoResponseDto>(Producto));
             return Ok(Producto.Id);
         }
 
 
-        [HttpPut("{Id}")] //EDITAR
+        [HttpPut("{Id}")] 
         [Authorize(Roles = "Administrador, Encargado")]
 
         public async Task<IActionResult> Editar(int? Id, ProductoUpdateRequestDto ProductoUpdateRequestDto)
@@ -111,14 +105,12 @@ namespace Pedidos.AplicacionWeb.Controllers
 
             Producto ProductoBack = _producto.GetById(Id.Value);
 
-            //Producto ProductoBack = _producto.GetById(Id.Value);
 
             if (ProductoBack is null)
             {
                 return NotFound();
             }
 
-            //ProductoBack = _mapper.Map<Producto>(ProductoUpdateRequestDto);
             _mapper.Map(ProductoUpdateRequestDto, ProductoBack);
 
             _producto.Save(ProductoBack);

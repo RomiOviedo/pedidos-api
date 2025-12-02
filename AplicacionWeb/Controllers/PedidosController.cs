@@ -11,7 +11,6 @@ using Pedidos.Aplicacion.DTOs.Pedido;
 namespace Pedidos.AplicacionWeb.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-
     [Route("api/[controller]")]
     [ApiController]
 
@@ -43,8 +42,6 @@ namespace Pedidos.AplicacionWeb.Controllers
 
             if (pedido == null || !pedido.Any())
             {
-                // return Ok(new List<ClienteResponseDto>());  // Devuelve lista vacía
-                // también podrías usar:
                 return NoContent();
 
             }
@@ -55,7 +52,6 @@ namespace Pedidos.AplicacionWeb.Controllers
 
 
         [HttpGet("ById/{id}")]
-        // [Route("ById")]
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> ById(int id)
@@ -77,7 +73,7 @@ namespace Pedidos.AplicacionWeb.Controllers
             }
         }
 
-        [HttpPost] //CREAR
+        [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> Crear(PedidoCreateRequestDto PedidoRequestDto)
@@ -95,31 +91,30 @@ namespace Pedidos.AplicacionWeb.Controllers
         }
 
 
-        [HttpPut("{Id}")] //EDITAR
+        [HttpPut("{Id}")] 
         [Authorize(Roles = "Administrador, Encargado")]
 
-        public async Task<IActionResult> Editar(int Id, PedidoUpdateRequestDto pedidoUpdateRequestDto)
+        public async Task<IActionResult> Editar(int? Id, PedidoUpdateRequestDto pedidoUpdateRequestDto)
         {
-            //if (!Id.HasValue)
-            //{
-            //    return BadRequest();
-            //}
+            if (!Id.HasValue)
+            {
+                return BadRequest();
+            }
 
-            //    if (!ModelState.IsValid)
-            //    {
-            //        return BadRequest();
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
-            Pedido pedidoBack = _pedido.GetById(Id);
+            Pedido pedidoBack = _pedido.GetById(Id.Value);
 
-            //Pedido PedidoBack = _pedido.GetById(Id.Value);
+        
 
             if (pedidoBack is null)
             {
                 return NotFound();
             }
 
-            //PedidoBack = _mapper.Map<Pedido>(PedidoUpdateRequestDto);
             _mapper.Map(pedidoUpdateRequestDto, pedidoBack);
 
             _pedido.Save(pedidoBack);
@@ -152,7 +147,6 @@ namespace Pedidos.AplicacionWeb.Controllers
             _pedido.Delete(pedidoBack.Id);
 
          return Ok($"Se eliminó el pedido con ID {pedidoBack.Id}");
-           // return NoContent();
         }
 
 

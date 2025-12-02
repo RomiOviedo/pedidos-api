@@ -5,13 +5,11 @@ namespace Pedidos.Entidades
 {
     public class Cliente : IEntidad
     {
-        //agregue 18.11.25
 
         public Cliente()
         {
 
         }
-        //agregue 18.11.25
         public Cliente(string nombre, string apellido, string telefono)
         {
             SetNombre(nombre);

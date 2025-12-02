@@ -26,16 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapping\Admin\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Aplicacion\Aplicacion.csproj" />
-    <ProjectReference Include="..\Datos\Datos.csproj" />
-    <ProjectReference Include="..\Abstraccion\Abstraccion.csproj" />
-    <ProjectReference Include="..\Entities\Entidades.csproj" />
-    <ProjectReference Include="..\Repositorio\Repositorio.csproj" />
-    <ProjectReference Include="..\Servicios\Servicios.csproj" />
+    <ProjectReference Include="..\Aplicacion\Pedidos.Aplicacion.csproj" />
+    <ProjectReference Include="..\Datos\Pedidos.Datos.csproj" />
+    <ProjectReference Include="..\Abstraccion\Pedidos.Abstraccion.csproj" />
+    <ProjectReference Include="..\Entities\Pedidos.Entidades.csproj" />
+    <ProjectReference Include="..\Repositorio\Pedidos.Repositorio.csproj" />
+    <ProjectReference Include="..\Servicios\Pedidos.Servicios.csproj" />
   </ItemGroup>
 
 </Project>
