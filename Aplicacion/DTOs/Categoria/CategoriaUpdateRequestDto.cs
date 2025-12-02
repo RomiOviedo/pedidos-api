@@ -9,10 +9,8 @@ namespace Pedidos.Aplicacion.DTOs.Categoria
 {
     public class CategoriaUpdateRequestDto
     {
-       // public int Id { get; set; }
 
-
-       // [Required]
+        [Required]
         [StringLength(30)]
         public string Nombre { get; set; }
 

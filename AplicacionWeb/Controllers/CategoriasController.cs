@@ -43,6 +43,8 @@ namespace Pedidos.AplicacionWeb.Controllers
 
         }
 
+
+
         [HttpGet("ById/{id}")]
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
         public async Task<IActionResult> ById(int id)

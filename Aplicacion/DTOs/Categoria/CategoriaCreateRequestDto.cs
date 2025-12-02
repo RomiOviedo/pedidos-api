@@ -10,7 +10,7 @@ namespace Pedidos.Aplicacion.DTOs.Categoria
     public class CategoriaCreateRequestDto
     {
 
-        //[Required]
+        [Required]
         [StringLength(30)]
         public string Nombre { get; set; }
 

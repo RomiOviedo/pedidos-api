@@ -17,10 +17,12 @@ namespace Pedidos.Aplicacion.DTOs.DetallePedido
         [Required]
         public int IdProducto { get; set; }
 
+        [Required]
 
         [Range(1, int.MaxValue, ErrorMessage ="la cantidad debe ser mayor a cero ")]
         public int Cantidad { get; set; }
 
+        [Required]
 
         [Range(0, double.MaxValue, ErrorMessage ="El precio no puede ser negativo")]
         public decimal PrecioUnitario { get; set; }

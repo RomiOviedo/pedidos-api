@@ -1,10 +1,4 @@
 
-//namespace Pedidos.WebApi
-//{
-//    public class Program
-//    {
-//        public static void Main(string[] args)
-//        {
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -23,12 +17,10 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -103,6 +95,7 @@ builder.Services.AddIdentity<User, Role>(
 
 
 builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddScoped(typeof(IStringServices), typeof(StringServices));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
