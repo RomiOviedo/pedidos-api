@@ -95,7 +95,6 @@ builder.Services.AddIdentity<User, Role>(
 
 
 builder.Services.AddAutoMapper(typeof(Program));
-
 builder.Services.AddScoped(typeof(IStringServices), typeof(StringServices));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
