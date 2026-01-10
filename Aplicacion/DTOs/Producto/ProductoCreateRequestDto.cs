@@ -12,7 +12,7 @@ namespace Pedidos.Aplicacion.DTOs.Producto
     {
         [Required]
         [StringLength(30)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = null!;
 
 
         [Required]

@@ -20,7 +20,7 @@ namespace Pedidos.Entidades
 
         [Required]
         [StringLength(30)]
-        public string Nombre { get; private set; }
+        public string Nombre { get; private set; } = null!;
         #endregion
 
         #region Virtual

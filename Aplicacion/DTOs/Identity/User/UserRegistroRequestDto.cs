@@ -10,17 +10,17 @@ namespace Pedidos.Aplicacion.DTOs.Identity.User
     public class UserRegistroRequestDto
     {
         [Required]
-        public string Nombres { get; set; }
+        public string Nombres { get; set; } = null!;
 
         [Required]
-        public string Apellidos { get; set; }
+        public string Apellidos { get; set; } = null!;
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string Email { get; set; } = null!;
 
         [Required]
-        public string Password { get; set; }
+        public string Password { get; set; } = null!;
 
         [DataType(DataType.Date)]
         public DateTime? FechaNacimiento { get; set; }

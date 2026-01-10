@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Pedidos.Aplicacion.DTOs.Categoria
 {
-    public class CategoriaUpdateRequestDto
+    public class CategoriaRequestDto
     {
-
         [Required]
         [StringLength(30)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = null!;
+
 
 
     }

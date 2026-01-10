@@ -10,9 +10,9 @@ namespace Pedidos.Aplicacion.DTOs.Usuario
     public class UsuarioResponseDto
     {
         public Guid Id { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
+        public string Nombres { get; set; } = null!;
+        public string Apellidos { get; set; } = null!;
 
-        public string Roles { get; set; }
+        public string Roles { get; set; } = null!;
     }
 }

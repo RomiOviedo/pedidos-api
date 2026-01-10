@@ -69,7 +69,7 @@ namespace DetallesPedidos.AplicacionWeb.Controller
         [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
-        public async Task<IActionResult> Crear(DetallePedidoCreateRequestDto detallePedidoRequestDto)
+        public async Task<IActionResult> Crear(DetallePedidoRequestDto detallePedidoRequestDto)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace DetallesPedidos.AplicacionWeb.Controller
         [HttpPut] 
         [Authorize(Roles = "Administrador, Encargado")]
 
-        public async Task<IActionResult> Editar(int? Id, DetallePedidoUpdateRequestDto detallePedidoUpdateRequestDto)
+        public async Task<IActionResult> Editar(int? Id, DetallePedidoRequestDto detallePedidoUpdateRequestDto)
         {
 
             if (!Id.HasValue)

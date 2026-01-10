@@ -23,20 +23,20 @@ namespace Pedidos.Entidades
         [Required]
 
         [StringLength (30)]
-        public string Nombre { get; private set; }
+        public string Nombre { get; private set; } = null!;
         [Required]
 
         [StringLength(30)]
-        public string Apellido { get; private set; }
+        public string Apellido { get; private set; } = null!;
         [Required]
 
         [Phone]
         [StringLength(15)]
-        public string Telefono { get; private set; }
+        public string Telefono { get; private set; } = null!;
         [Required]
 
         [StringLength(50)]
-        public string Direccion { get; private set; }
+        public string Direccion { get; private set; } = null!;
         #endregion
 
 

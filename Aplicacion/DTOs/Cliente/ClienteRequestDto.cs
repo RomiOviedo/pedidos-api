@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pedidos.Aplicacion.DTOS.Cliente
+namespace Pedidos.Aplicacion.DTOs.Cliente
 {
-    public class ClienteCreateRequestDto
+    public class ClienteRequestDto
     {
         [Required]
 
         [StringLength(30)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = null!;
         [Required]
 
         [StringLength(30)]
-        public string Apellido { get; set; }
+        public string Apellido { get; set; } = null!;
         [Required]
 
         [Phone]
@@ -25,7 +25,7 @@ namespace Pedidos.Aplicacion.DTOS.Cliente
         [Required]
 
         [StringLength(50)]
-        public string Direccion { get; set; }
+        public string Direccion { get; set; } = null!;
 
     }
 }

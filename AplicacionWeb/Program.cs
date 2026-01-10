@@ -1,5 +1,3 @@
-
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +17,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
@@ -40,10 +37,12 @@ builder.Services.AddSwaggerGen(c =>
             Type = ReferenceType.SecurityScheme
         }
     };
+
     c.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    { {
-        jwtSecurityScheme,Array.Empty<string>() } });
+    { 
+        {jwtSecurityScheme,Array.Empty<string>() } 
+    });
 });
 
 
@@ -52,14 +51,16 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<DbDataAcces>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        o => o.MigrationsAssembly("AplicacionWeb"));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        o => o.MigrationsAssembly("AplicacionWeb")
+        );
     options.UseLazyLoadingProxies();
-}
-);
+});
 
 
-builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfig"));
+builder.Services.Configure<JwtConfig>(
+    builder.Configuration.GetSection("JwtConfig"));
 
 
 
@@ -68,35 +69,43 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(jwt => {
-    var key = Encoding.ASCII.GetBytes(builder.Configuration["JwtConfig:Secret"]);
-    jwt.SaveToken = true;
-    jwt.TokenValidationParameters = new TokenValidationParameters
+})
+    .AddJwtBearer(jwt => 
     {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        RequireExpirationTime = false,
-        ValidateLifetime = true,
-        RoleClaimType = ClaimTypes.Role
-    };
-});
+        var key = Encoding.ASCII.GetBytes(
+            builder.Configuration["JwtConfig:Secret"]);
+        
+        jwt.SaveToken = true;
+        jwt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            RequireExpirationTime = false,
+            ValidateLifetime = true,
+            RoleClaimType = ClaimTypes.Role
+        };
+    });
 
 
-builder.Services.AddIdentity<User, Role>(
-    options => options.SignIn.RequireConfirmedAccount = true).
-    AddDefaultTokenProviders().
-    AddEntityFrameworkStores<DbDataAcces>().
-    AddSignInManager<SignInManager<User>>().
-    AddRoleManager<RoleManager<Role>>().
-    AddUserManager<UserManager<User>>();
+builder.Services.AddIdentity<User, Role>(options =>
+
+    {
+        options.SignIn.RequireConfirmedAccount = true;
+    })
+
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<DbDataAcces>()
+    .AddSignInManager<SignInManager<User>>()
+    .AddRoleManager<RoleManager<Role>>()
+    .AddUserManager<UserManager<User>>();
 
 
 
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddScoped(typeof(IStringServices), typeof(StringServices));
 
+builder.Services.AddScoped(typeof(IStringServices), typeof(StringServices));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IApplication<>), typeof(Aplicacion<>));
 builder.Services.AddScoped(typeof(IDbContext<>), typeof(DbContext<>));

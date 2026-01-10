@@ -22,12 +22,12 @@ namespace Pedidos.Entidades
 
         [Required]
         [StringLength(30)]
-        public string Nombre { get; private set; }
+        public string Nombre { get; private set; } = null!;
 
 
         [Required]
         [Range(0, double.MaxValue, ErrorMessage = "No se aceptan valores negativos")]
-        public decimal Precio { get; private set; }
+        public decimal Precio { get; private set; } 
 
 
         [Required]

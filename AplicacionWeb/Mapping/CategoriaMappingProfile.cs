@@ -11,10 +11,7 @@ namespace Pedidos.AplicacionWeb.Mapping
             CreateMap<Categoria, CategoriaResponseDto>();
 
 
-            CreateMap<CategoriaCreateRequestDto, Categoria>();
-               
-
-            CreateMap<CategoriaUpdateRequestDto, Categoria>()
+            CreateMap<CategoriaRequestDto, Categoria>()
                 .ForMember(dest => dest.Nombre, opt => opt.Ignore())
                 .AfterMap((dto, categoria) =>
                 {

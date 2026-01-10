@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Pedidos.Aplicacion.DTOs.Cliente;
 using Pedidos.Aplicacion.DTOS.Cliente;
 using Pedidos.Entidades;
 
@@ -11,7 +12,7 @@ namespace Pedidos.AplicacionWeb.Mapping
             CreateMap<Cliente, ClienteResponseDto>();
 
 
-            CreateMap<ClienteUpdateRequestDto, Cliente>()
+            CreateMap<ClienteRequestDto, Cliente>()
             .ForMember(dest => dest.Nombre, opt => opt.Ignore()).AfterMap((dto, categoria) =>
                 {categoria.SetNombre(dto.Nombre);})
 
@@ -21,8 +22,6 @@ namespace Pedidos.AplicacionWeb.Mapping
             .ForMember(dest => dest.Telefono, opt => opt.Ignore()).AfterMap((dto, categoria) =>
                 {categoria.SetTelefono(dto.Telefono);});
 
-
-            CreateMap<ClienteCreateRequestDto, Cliente>();
 
         }
 

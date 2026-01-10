@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pedidos.Entidades;
 using Pedidos.Aplicacion;
+using Pedidos.Aplicacion.DTOs.Cliente;
 using Pedidos.Aplicacion.DTOS.Cliente;
 
 namespace Pedidos.AplicacionWeb.Controllers
@@ -80,7 +81,7 @@ namespace Pedidos.AplicacionWeb.Controllers
         [HttpPost] 
         [Authorize(Roles = "Administrador, Encargado,Cajero ")]
 
-        public async Task<IActionResult> Crear(ClienteCreateRequestDto clienteRequestDto)
+        public async Task<IActionResult> Crear(ClienteRequestDto clienteRequestDto)
         {
             if (!ModelState.IsValid)
             {
@@ -98,7 +99,7 @@ namespace Pedidos.AplicacionWeb.Controllers
         [HttpPut] 
         [Authorize(Roles = "Administrador, Encargado, Cajero")]
 
-        public async Task<IActionResult> Editar(int? Id, ClienteUpdateRequestDto clienteUpdateRequestDto)
+        public async Task<IActionResult> Editar(int? Id, ClienteRequestDto clienteUpdateRequestDto)
         {
             if (!Id.HasValue)
             {

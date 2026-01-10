@@ -9,7 +9,7 @@ namespace Pedidos.Aplicacion.DTOs.Identity.Roles
     public class RoleResponseDto
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
     }
 }

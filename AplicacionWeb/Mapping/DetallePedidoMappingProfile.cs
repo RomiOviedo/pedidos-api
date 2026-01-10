@@ -10,22 +10,8 @@ namespace Pedidos.AplicacionWeb.Mapping
         {
             CreateMap<DetallePedido, DetallePedidoResponseDto>();
 
-            CreateMap<DetallePedidoCreateRequestDto, DetallePedido>()
-               .ForMember(dest => dest.Cantidad, opt => opt.Ignore()).AfterMap((dto, categoria) =>
-                 { categoria.SetCantidad(dto.Cantidad); })
 
-               .ForMember(dest => dest.PrecioUnitario, opt => opt.Ignore()).AfterMap((dto, categoria) =>
-                 { categoria.SetPrecioUnitario(dto.PrecioUnitario); })
-
-            .ForMember(dest => dest.Subtotal, opt => opt.Ignore()).AfterMap((dto, categoria) =>
-            {
-                categoria.SetCantidad(dto.Cantidad);
-                categoria.SetPrecioUnitario(dto.PrecioUnitario);
-                categoria.SetSubtotal();
-            });
-
-
-                CreateMap<DetallePedidoUpdateRequestDto, DetallePedido>()
+                CreateMap<DetallePedidoRequestDto, DetallePedido>()
                  .ForMember(dest => dest.Cantidad, opt => opt.Ignore())
                     .ForMember(dest => dest.PrecioUnitario, opt => opt.Ignore())
                     .ForMember(dest => dest.Subtotal, opt => opt.Ignore())
@@ -35,8 +21,6 @@ namespace Pedidos.AplicacionWeb.Mapping
                     entidad.SetPrecioUnitario(dto.PrecioUnitario);
                     entidad.SetSubtotal();
                     });
-
-
 
         }
     }

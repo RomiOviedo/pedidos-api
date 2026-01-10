@@ -9,8 +9,8 @@ namespace Pedidos.Aplicacion.DTOs.Usuario
 {
     public class UsuarioCreateRequestDto
     {
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
+        public string Nombres { get; set; } = null!;
+        public string Apellidos { get; set; } = null!;
 
         [DataType(DataType.Date)]
         public DateTime? FechaNacimiento { get; set; }

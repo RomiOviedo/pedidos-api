@@ -62,7 +62,7 @@ namespace Pedidos.AplicacionWeb.Controllers
         [Authorize(Roles = "Administrador, Encargado")]
 
 
-        public async Task<IActionResult> Crear(CategoriaCreateRequestDto CategoriaRequestDto)
+        public async Task<IActionResult> Crear(CategoriaRequestDto CategoriaRequestDto)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace Pedidos.AplicacionWeb.Controllers
         [HttpPut]
         [Authorize(Roles = "Administrador,Encargado")]
 
-        public async Task<IActionResult> Editar(int? Id, [FromBody] CategoriaUpdateRequestDto CategoriaUpdateRequestDto)
+        public async Task<IActionResult> Editar(int? Id, [FromBody] CategoriaRequestDto CategoriaUpdateRequestDto)
         {
             if (!Id.HasValue)
             {
