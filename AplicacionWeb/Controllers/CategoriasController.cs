@@ -33,7 +33,7 @@ namespace Pedidos.AplicacionWeb.Controllers
 
         [HttpGet]
         [Route("All")]
-        [Authorize(Roles = "Administrador, Encargado, Cajero")]
+        //[Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> All()
         {

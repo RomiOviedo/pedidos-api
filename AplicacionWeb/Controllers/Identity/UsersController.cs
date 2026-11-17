@@ -61,7 +61,7 @@ namespace Pedidos.AplicacionWeb.Controllers.Identity
 
         [HttpPost]
         [Route("AddRoleToUser")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
 
         //  [AllowAnonymous] // Solo este endpoint puede ser usado sin token
         public async Task<IActionResult> Guardar(string userId, string roleId)

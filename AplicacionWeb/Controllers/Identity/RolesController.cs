@@ -26,7 +26,7 @@ namespace Pedidos.AplicacionWeb.Controllers.Identity
 
         [HttpGet]
         [Route("GetAll")]
-        [Authorize(Roles = "Administrador, Encargado")]
+        //[Authorize(Roles = "Administrador, Encargado")]
 
         public async Task<IActionResult> GetAll()
         {

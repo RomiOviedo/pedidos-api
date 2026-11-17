@@ -31,7 +31,7 @@ namespace DetallesPedidos.AplicacionWeb.Controller
 
         [HttpGet]
         [Route("All")]
-        [Authorize(Roles = "Administrador, Encargado,Cajero ")]
+        //[Authorize(Roles = "Administrador, Encargado,Cajero ")]
         public async Task<IActionResult> All()
         {
             var deteallePedidos = _detallePedido.GetAll();
@@ -67,7 +67,7 @@ namespace DetallesPedidos.AplicacionWeb.Controller
             }
         }
         [HttpPost] 
-        [Authorize(Roles = "Administrador, Encargado, Cajero")]
+        //[Authorize(Roles = "Administrador, Encargado, Cajero")]
 
         public async Task<IActionResult> Crear(DetallePedidoRequestDto detallePedidoRequestDto)
         {
